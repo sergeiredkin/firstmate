@@ -1,0 +1,15 @@
+record 001 path: /tmp/fm-inbox-live.RubSZd/state/t6091.inbox/001.msg
+record 001 final byte (hex): 0a
+record 001 body via public reader: [operator message without trailing newline]
+record 002 final byte (hex): 0a
+record 002 multiline body cmp: exact
+record 002 body hex: 6c 69 6e 65 20 6f 6e 65 0a 6c 69 6e 65 20 74 77 6f 0a 0a
+terminal lines typed by fm-send (doorbells, not payloads):
+: Firstmate instruction waiting: list "$FM_TASK_INBOX"/*.msg in your 't6091.inbox' steering inbox, read and act on each in numeric order, then mv each into its handled/.
+: Firstmate instruction waiting: list "$FM_TASK_INBOX"/*.msg in your 't6091.inbox' steering inbox, read and act on each in numeric order, then mv each into its handled/.
+legacy body via public reader: [legacy without newline]
+generated worker inbox instructions:
+# Firstmate instruction inbox
+Firstmate steers you through durable message files in '/tmp/fm-inbox-live.RubSZd/state/t6091.inbox'.
+When a terminal message says an instruction is waiting there - and at any natural checkpoint when you are unsure - list '/tmp/fm-inbox-live.RubSZd/state/t6091.inbox'/*.msg, read the complete contents of each record (including its final line even when it is not newline-terminated) and act on each message in numeric order, then acknowledge each handled message by moving it: `mv '/tmp/fm-inbox-live.RubSZd/state/t6091.inbox'/NNN.msg '/tmp/fm-inbox-live.RubSZd/state/t6091.inbox'/handled/`.
+The move IS the acknowledgement: without it firstmate rings again and eventually treats you as stuck. An empty or absent inbox needs no action.
